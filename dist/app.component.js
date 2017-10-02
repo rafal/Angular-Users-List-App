@@ -18,11 +18,15 @@ var AppComponent = /** @class */ (function () {
             { id: 27, name: 'Holly', username: 'hollylawly' }
         ];
     }
+    AppComponent.prototype.selectUser = function (user) {
+        this.activeUser = user;
+        console.log(this.activeUser);
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <header>\n      <nav class=\"navbar navbar-inverse\">\n        <div class=\"navbar-header\">\n          <a href=\"/\" class=\"navbar-brand\">My Angular App</a>\n        </div>\n      </nav>\n    </header>\n\n    <main>\n      <div class=\"row\">\n        <div class=\"col-sm-4\">\n          <div *ngIf=\"users\">\n          <ul class=\"list-group users-list\">\n            <li class=\"list-group-item\" *ngFor=\"let user of users\"> {{user.name}} ({{user.username}})</li>\n          </ul>\n          </div>\n        </div>\n        <div class=\"col-sm-8\">\n          <div class=\"jumbotron\">\n            <h1>Welcome to Our App!</h1>\n            <p>{{message}}</p>\n          </div>\n        </div>\n      </div>\n      \n\n    </main>\n\n    <footer class=\"text-center\">\n      Copyright &copy; 2017\n    </footer>\n  ",
-            styles: ["\n    .jumbotron { box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2); }\n  "]
+            template: "\n    <header>\n      <nav class=\"navbar navbar-inverse\">\n        <div class=\"navbar-header\">\n          <a href=\"/\" class=\"navbar-brand\">My Angular App</a>\n        </div>\n      </nav>\n    </header>\n\n    <main>\n      <div class=\"row\">\n        <div class=\"col-sm-4\">\n          <div *ngIf=\"users\">\n          <ul class=\"list-group users-list\">\n            <li class=\"list-group-item\"\n              *ngFor=\"let user of users\"\n              (click)=\"selectUser(user)\"\n              [class.active]=\"user===activeUser\">\n              {{ user.name }} ({{ user.username }})\n            </li>\n          </ul>\n          </div>\n        </div>\n        <div class=\"col-sm-8\">\n          <div class=\"jumbotron\" *ngIf=\"activeUser\">\n            <h2>{{activeUser.name}} <small> {{activeUser.username}}</small></h2>\n          </div>\n          <div class=\"jumbotron\" *ngIf=\"!activeUser\">\n            <span class=\"glyphicon glyphicon-hand-left\"></span>\n            <h2>Choose a user</h2>\n          </div>\n        </div>\n      </div>\n      \n\n    </main>\n\n    <footer class=\"text-center\">\n      Copyright &copy; 2017\n    </footer>\n  ",
+            styles: ["\n    .users-list li {\n      cursor: pointer;\n    }\n    .jumbotron .glyphicon{\n      font-size: 80px;\n    }\n  "]
         })
     ], AppComponent);
     return AppComponent;
