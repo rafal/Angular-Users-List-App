@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from './shared/models/user';
+import { User } from './shared/models/user';  
 
 
 @Component({
@@ -31,14 +31,12 @@ import { User } from './shared/models/user';
           <div class="jumbotron" *ngIf="activeUser">
             <h2>{{activeUser.name}} <small> {{activeUser.username}}</small></h2>
           </div>
-          <div class="jumbotron" *ngIf="!activeUser">
+          <div class="jumbotron gocrazy" *ngIf="!activeUser">
             <span class="glyphicon glyphicon-hand-left"></span>
             <h2>Choose a user</h2>
           </div>
         </div>
       </div>
-      
-
     </main>
 
     <footer class="text-center">
