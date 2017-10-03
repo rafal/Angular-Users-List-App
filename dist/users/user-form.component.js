@@ -7,15 +7,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var user_1 = require("../shared/models/user");
 // Component DECORATOR
 var UserFormComponent = /** @class */ (function () {
     function UserFormComponent() {
+        this.newUser = new user_1.User();
     }
     UserFormComponent = __decorate([
         core_1.Component({
             selector: 'user-form',
-            styles: ["\n    form {\n      padding: 10px;\n      background: #ECF0F1;\n      border-radius: 3px;\n    }\n  "],
-            template: "\n    <form>\n\n      <div class=\"form-group\">\n        <input type=\"text\" class=\"form-control\" name=\"name\" required>\n      </div>\n\n      <div class=\"form-group\">\n        <input type=\"text\" class=\"form-control\" name=\"username\" required>\n      </div>\n\n      <button type=\"submit\" class=\"btn btn-lg btn-block btn-primary\">\n        Create User\n      </button>\n\n    </form>\n  "
+            styles: ["\n    form {\n      padding: 10px;\n      background: #ECF0F1;\n      border-radius: 3px;\n      margin-bottom: 30px;\n    }\n  "],
+            template: "\n    <form #form=\"ngForm\">\n    {{ form.valid }}\n\n      <div class=\"form-group\">\n        <input type=\"text\" class=\"form-control\"\n          name=\"name\" required\n          [(ngModel)]=\"newUser.name\" #name=\"ngModel\">\n      </div>\n\n      <div class=\"form-group\">\n        <input type=\"text\" class=\"form-control\" name=\"username\" required\n        [(ngModel)]=\"newUser.username\" #username=\"ngModel\">\n      </div>\n\n      <button type=\"submit\" class=\"btn btn-lg btn-block btn-primary\" [disabled]=\"form.invalid\">\n        Create User\n      </button>\n\n    </form>\n  "
         })
     ], UserFormComponent);
     return UserFormComponent;
