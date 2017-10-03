@@ -11,6 +11,7 @@ var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
 var user_profile_component_1 = require("./users/user-profile.component");
+var user_form_component_1 = require("./users/user-form.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -22,7 +23,8 @@ var AppModule = /** @class */ (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
-                user_profile_component_1.UserProfileComponent
+                user_profile_component_1.UserProfileComponent,
+                user_form_component_1.UserFormComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         })
